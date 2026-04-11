@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { hasDatabaseUrl } from "@/lib/env";
 import { type CatalogProduct, sampleProducts } from "@/lib/sample-data";
 
-function fromDbProduct(product: Product): CatalogProduct {
+export function fromDbProduct(product: Product): CatalogProduct {
   return {
     id: product.id,
     name: product.name,

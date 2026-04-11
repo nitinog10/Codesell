@@ -1,4 +1,5 @@
 import NextAuth, { type NextAuthConfig } from "next-auth";
+import type { Adapter } from "next-auth/adapters";
 import GitHub from "next-auth/providers/github";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
@@ -11,7 +12,7 @@ type GitHubProfile = {
 };
 
 export const authConfig = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as Adapter,
   session: {
     strategy: "database"
   },
@@ -53,7 +54,7 @@ export const authConfig = {
     async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
-        session.user.role = user.role;
+        session.user.role = user.role ?? "BUYER";
         session.user.username = user.username;
         session.user.avatarUrl = user.avatarUrl ?? user.image ?? null;
       }
