@@ -42,3 +42,9 @@ CodeSell is a Next.js MVP for selling private GitHub source code repositories. B
 - Admin access is controlled by the `User.role` field. Set your user to `ADMIN` in the database after the first GitHub login.
 - The public catalog falls back to sample products when `DATABASE_URL` is not configured, but order creation requires a real database.
 - Repository delivery uses `GITHUB_SELLER_PAT` and always requests GitHub `pull` permission.
+
+## Code Improvements Applied
+
+- Added regression tests for high-risk files: `src/lib/sample-data.ts`, `emails/CollabInvite.tsx`, `emails/PurchaseConfirmation.tsx`.
+- Proposed extracting shared utility code into a dedicated module to reduce coupling.
+- Re-indexed and regenerated walkthroughs/diagrams to maintain up-to-date documentation.
