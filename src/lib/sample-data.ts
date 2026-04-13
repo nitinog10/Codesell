@@ -1,3 +1,4 @@
+```typescript
 export type CatalogProduct = {
   id: string;
   name: string;
@@ -18,6 +19,8 @@ export type CatalogProduct = {
   demoUrl?: string;
 };
 
+import { generateProductUrls } from '../utils/productUrls';
+
 export const sampleProducts: CatalogProduct[] = [
   {
     id: "starter-next-saas",
@@ -32,11 +35,10 @@ export const sampleProducts: CatalogProduct[] = [
     repoOwner: "codesell",
     repoName: "next-saas-starter",
     repoUrl: "https://github.com/codesell/next-saas-starter",
-    imageUrl:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80",
+    imageUrl: generateProductUrls("starter-next-saas"),
     screenshots: [
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=80"
+      generateProductUrls("starter-next-saas-screenshot-1"),
+      generateProductUrls("starter-next-saas-screenshot-2")
     ],
     tags: ["SaaS", "Starter"],
     techStack: ["Next.js", "TypeScript", "Stripe", "Prisma"],
@@ -57,11 +59,10 @@ export const sampleProducts: CatalogProduct[] = [
     repoOwner: "codesell",
     repoName: "mobile-commerce-api",
     repoUrl: "https://github.com/codesell/mobile-commerce-api",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=80",
+    imageUrl: generateProductUrls("mobile-commerce-api"),
     screenshots: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
+      generateProductUrls("mobile-commerce-api-screenshot-1"),
+      generateProductUrls("mobile-commerce-api-screenshot-2")
     ],
     tags: ["API", "Commerce"],
     techStack: ["Node.js", "PostgreSQL", "Zod", "Razorpay"],
@@ -82,11 +83,10 @@ export const sampleProducts: CatalogProduct[] = [
     repoOwner: "codesell",
     repoName: "ai-support-widget",
     repoUrl: "https://github.com/codesell/ai-support-widget",
-    imageUrl:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80",
+    imageUrl: generateProductUrls("ai-support-widget"),
     screenshots: [
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80"
+      generateProductUrls("ai-support-widget-screenshot-1"),
+      generateProductUrls("ai-support-widget-screenshot-2")
     ],
     tags: ["AI", "Widget"],
     techStack: ["React", "Web Components", "Prisma", "Resend"],
@@ -95,3 +95,4 @@ export const sampleProducts: CatalogProduct[] = [
     demoUrl: "https://demo.codesell.dev/support"
   }
 ];
+```
