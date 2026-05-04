@@ -1,4 +1,3 @@
-```typescript
 export type CatalogProduct = {
   id: string;
   name: string;
@@ -19,7 +18,8 @@ export type CatalogProduct = {
   demoUrl?: string;
 };
 
-import { generateProductUrls } from '../utils/productUrls';
+const productImage = (name: string) =>
+  `https://placehold.co/1200x800?text=${encodeURIComponent(name)}`;
 
 export const sampleProducts: CatalogProduct[] = [
   {
@@ -35,10 +35,10 @@ export const sampleProducts: CatalogProduct[] = [
     repoOwner: "codesell",
     repoName: "next-saas-starter",
     repoUrl: "https://github.com/codesell/next-saas-starter",
-    imageUrl: generateProductUrls("starter-next-saas"),
+    imageUrl: productImage("Next SaaS Starter Kit"),
     screenshots: [
-      generateProductUrls("starter-next-saas-screenshot-1"),
-      generateProductUrls("starter-next-saas-screenshot-2")
+      productImage("Next SaaS Starter Kit Screenshot 1"),
+      productImage("Next SaaS Starter Kit Screenshot 2")
     ],
     tags: ["SaaS", "Starter"],
     techStack: ["Next.js", "TypeScript", "Stripe", "Prisma"],
@@ -59,10 +59,10 @@ export const sampleProducts: CatalogProduct[] = [
     repoOwner: "codesell",
     repoName: "mobile-commerce-api",
     repoUrl: "https://github.com/codesell/mobile-commerce-api",
-    imageUrl: generateProductUrls("mobile-commerce-api"),
+    imageUrl: productImage("Mobile Commerce API"),
     screenshots: [
-      generateProductUrls("mobile-commerce-api-screenshot-1"),
-      generateProductUrls("mobile-commerce-api-screenshot-2")
+      productImage("Mobile Commerce API Screenshot 1"),
+      productImage("Mobile Commerce API Screenshot 2")
     ],
     tags: ["API", "Commerce"],
     techStack: ["Node.js", "PostgreSQL", "Zod", "Razorpay"],
@@ -83,10 +83,10 @@ export const sampleProducts: CatalogProduct[] = [
     repoOwner: "codesell",
     repoName: "ai-support-widget",
     repoUrl: "https://github.com/codesell/ai-support-widget",
-    imageUrl: generateProductUrls("ai-support-widget"),
+    imageUrl: productImage("AI Support Widget"),
     screenshots: [
-      generateProductUrls("ai-support-widget-screenshot-1"),
-      generateProductUrls("ai-support-widget-screenshot-2")
+      productImage("AI Support Widget Screenshot 1"),
+      productImage("AI Support Widget Screenshot 2")
     ],
     tags: ["AI", "Widget"],
     techStack: ["React", "Web Components", "Prisma", "Resend"],
@@ -95,4 +95,3 @@ export const sampleProducts: CatalogProduct[] = [
     demoUrl: "https://demo.codesell.dev/support"
   }
 ];
-```
