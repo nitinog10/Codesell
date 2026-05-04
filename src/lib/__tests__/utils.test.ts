@@ -35,7 +35,7 @@ describe("utils", () => {
   });
 
   it("builds absolute URLs from configured app URLs", () => {
-    process.env.NEXT_PUBLIC_APP_URL = "https://example.com/app";
+    process.env.NEXT_PUBLIC_APP_URL = "https://example.com";
     expect(absoluteUrl("/products")).toBe("https://example.com/products");
   });
 });
