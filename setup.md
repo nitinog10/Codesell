@@ -87,13 +87,21 @@ access.
 
 ## 6. Set Up Database
 
-Push the schema:
+Run a one-shot database bootstrap:
+
+```bash
+npm run db:setup
+```
+
+This validates the Prisma schema, pushes it to your database, and seeds products.
+
+Push the schema manually:
 
 ```bash
 npm run db:push
 ```
 
-Seed sample products:
+Seed sample products manually:
 
 ```bash
 npm run db:seed
