@@ -45,6 +45,26 @@ export async function POST(request: Request) {
     );
   }
 
+  const alreadyPurchased = await prisma.orderItem.findFirst({
+    where: {
+      productId: { in: parsed.data.productIds },
+      order: {
+        userId: session.user.id,
+        status: OrderStatus.PAID
+      }
+    },
+    include: {
+      product: { select: { name: true } }
+    }
+  });
+
+  if (alreadyPurchased) {
+    return NextResponse.json(
+      { error: `You already purchased ${alreadyPurchased.product.name}.` },
+      { status: 409 }
+    );
+  }
+
   const currencies = new Set(products.map((product) => product.currency));
 
   if (currencies.size > 1) {
@@ -57,18 +77,20 @@ export async function POST(request: Request) {
   const totalAmount = products.reduce((sum, product) => sum + product.price, 0);
   const currency = products[0]?.currency ?? "INR";
 
-  const order = await prisma.order.create({
-    data: {
-      userId: session.user.id,
-      totalAmount,
-      currency,
-      items: {
-        create: products.map((product) => ({
-          productId: product.id,
-          price: product.price
-        }))
+  const order = await prisma.$transaction(async (tx) => {
+    return tx.order.create({
+      data: {
+        userId: session.user.id,
+        totalAmount,
+        currency,
+        items: {
+          create: products.map((product) => ({
+            productId: product.id,
+            price: product.price
+          }))
+        }
       }
-    }
+    });
   });
 
   const provider = selectedPaymentProvider();
