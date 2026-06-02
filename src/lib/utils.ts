@@ -1,3 +1,4 @@
+```typescript
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -15,17 +16,17 @@ export function formatMoney(amount: number, currency = "INR") {
 
 export function toSlug(value: string) {
   return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+   .toLowerCase()
+   .trim()
+   .replace(/[^a-z0-9]+/g, "-")
+   .replace(/^-+|-+$/g, "");
 }
 
 export function splitCsv(value: string) {
   return value
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
+   .split(",")
+   .map((item) => item.trim())
+   .filter(Boolean);
 }
 
 export function absoluteUrl(path: string) {
@@ -36,3 +37,4 @@ export function absoluteUrl(path: string) {
 
   return new URL(path, appUrl).toString();
 }
+```
