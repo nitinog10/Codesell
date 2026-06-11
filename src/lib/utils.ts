@@ -16,15 +16,15 @@ export function formatMoney(amount: number, currency = "INR") {
 
 export function toSlug(value: string) {
   return value
-   .toLowerCase()
-   .trim()
-   .replace(/[^a-z0-9]+/g, "-")
-   .replace(/^-+|-+$/g, "");
+  .toLowerCase()
+  .trim()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-+|-+$/g, "");
 }
 
 export function splitCsv(value: string) {
   return value
-   .split(",")
+  .split(",")
    .map((item) => item.trim())
    .filter(Boolean);
 }

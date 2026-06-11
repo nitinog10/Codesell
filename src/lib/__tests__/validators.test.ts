@@ -1,5 +1,7 @@
+```typescript
 import { describe, expect, it } from "vitest";
 import { createOrderSchema, productInputSchema } from "../validators";
+import { isUrl, isCurrency } from "../../../utils/validators";
 
 describe("validators", () => {
   it("applies defaults for optional product fields", () => {
@@ -66,4 +68,15 @@ describe("validators", () => {
       }).success
     ).toBe(false);
   });
+
+  it("validates URL format using utility function", () => {
+    expect(isUrl("https://valid-url.com")).toBe(true);
+    expect(isUrl("invalid-url")).toBe(false);
+  });
+
+  it("validates currency format using utility function", () => {
+    expect(isCurrency("USD")).toBe(true);
+    expect(isCurrency("INVALID")).toBe(false);
+  });
 });
+```
