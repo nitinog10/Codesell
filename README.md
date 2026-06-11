@@ -63,3 +63,9 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## License
 
 MIT
+
+## Code Improvements Applied
+
+- Added regression tests for high-risk files: `src/lib/utils.ts`, `src/lib/validators.ts`, `nitinog10-Codesell-1a39988/src/lib/utils.ts`.
+- Proposed extracting shared utility code into a dedicated module to reduce coupling.
+- Updated documentation by re-indexing and regenerating walkthroughs/diagrams post structural changes.
