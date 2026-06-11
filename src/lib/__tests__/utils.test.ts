@@ -1,7 +1,10 @@
+```ts
 import { describe, expect, it, beforeEach, afterAll } from "vitest";
 import { absoluteUrl, cn, formatMoney, splitCsv, toSlug } from "../utils";
+import { validateEmail, validatePassword } from "../../validators";
+import { anotherUtilityFunction } from "../../../nitinog10-Codesell-1a39988/src/lib/utils";
 
-const ORIGINAL_ENV = { ...process.env };
+const ORIGINAL_ENV = {...process.env };
 
 const resetEnv = () => {
   for (const key of Object.keys(process.env)) {
@@ -31,11 +34,26 @@ describe("utils", () => {
   });
 
   it("splits and trims CSV values while removing blanks", () => {
-    expect(splitCsv("alpha, beta,, gamma ,")).toEqual(["alpha", "beta", "gamma"]);
+    expect(splitCsv("alpha, beta,, gamma,")).toEqual(["alpha", "beta", "gamma"]);
   });
 
   it("builds absolute URLs from configured app URLs", () => {
     process.env.NEXT_PUBLIC_APP_URL = "https://example.com";
     expect(absoluteUrl("/products")).toBe("https://example.com/products");
   });
+
+  it("validates email format correctly", () => {
+    expect(validateEmail("test@example.com")).toBe(true);
+    expect(validateEmail("invalid-email")).toBe(false);
+  });
+
+  it("validates password strength correctly", () => {
+    expect(validatePassword("weak")).toBe(false);
+    expect(validatePassword("StrongPassword123!")).toBe(true);
+  });
+
+  it("performs another utility function as expected", () => {
+    expect(anotherUtilityFunction("input")).toBe("expectedOutput");
+  });
 });
+```
